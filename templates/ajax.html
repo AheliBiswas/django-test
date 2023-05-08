@@ -1,0 +1,23 @@
+<script>
+    $("#btn-save").click(function(){
+        console.log("Save button clicked")
+        let firstname=$("#firstname_id").val();
+        let lastname=$("lastname_id").val();
+        let age=$("#age_id").val();
+        let dob=$("#dob_id").val();
+        let phone_no=$("#phoneno_id").val();
+        let email=$("#email_id").val();
+        let csrf_token=$("input(name=csrfmiddlewaretoken").val()
+        mydate = {firstname:firstname,lastname:lastname,
+        age:age,dob:dob,phone_no:phone_no,email:email,csrfmiddlewaretoken:csrf_token}
+        $.ajax({
+            url: "{% url 'customer' %}",
+            method: "POST",
+            data: mydata,
+            success:function(data){
+                console.log(data);
+            }
+        })
+    });
+
+</script>
